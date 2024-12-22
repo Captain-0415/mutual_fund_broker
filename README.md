@@ -47,7 +47,13 @@ Follow these steps to build and run the application using **Docker Compose**. Th
 Ensure the following are installed on your system:
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose**: [Install Docker Compose](https://docs.docker.com/compose/install/)
+- **Environment Variables:** This project uses a `.env` file located in the `mutual_funds/app/` directory to store sensitive information like API keys and database configurations.
+Open the file and update the `RAPID_URL_API_KEY` with your Rapid API key as follows:
 
+```
+Rapid API key for fetching mutual fund data
+RAPID_URL_API_KEY=your_rapid_api_key_here
+```
 ---
 
 ## Deployment Steps
