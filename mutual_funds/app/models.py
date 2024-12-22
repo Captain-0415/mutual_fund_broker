@@ -18,7 +18,6 @@ class MutualFund(Base):
     scheme_code = Column(String, unique=True, index=True)
     scheme_name = Column(String)
     fund_family = Column(String, index=True)
-    scheme_name = Column(String)
     nav = Column(Float)
     scheme_type = Column(String)
     scheme_category = Column(String)
