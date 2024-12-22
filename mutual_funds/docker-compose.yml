@@ -11,19 +11,25 @@ services:
     environment:
       - DATABASE_URL=postgresql://broker:broker@db:5432/mutual_fund_broker
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: postgres:15
     container_name: postgres_db
     environment:
       POSTGRES_USER: broker
-      POSTGRES_PASSWORD: broker_password
+      POSTGRES_PASSWORD: broker
       POSTGRES_DB: mutual_fund_broker
     ports:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U broker -d mutual_fund_broker"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
 volumes:
   db_data:

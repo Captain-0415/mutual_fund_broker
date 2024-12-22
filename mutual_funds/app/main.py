@@ -1,9 +1,10 @@
 # app/main.py
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from database import engine, Base
 from routes import users, funds, portfolio
 from services import update_mutual_funds
 from apscheduler.schedulers.background import BackgroundScheduler
+from starlette.responses import RedirectResponse
 import logging
 
 app = FastAPI()
@@ -36,3 +37,10 @@ app = FastAPI(lifespan=app_lifespan)
 app.include_router(users.router, prefix="/users")
 app.include_router(funds.router, prefix="/funds")
 app.include_router(portfolio.router, prefix="/portfolio")
+
+custom_docs_url = "https://mutual-funds-api.apidog.io/"
+@app.middleware("http")
+async def apidog_docs_redirect(request: Request, call_next):
+    if request.url.path == "/docs":
+        return RedirectResponse(url=custom_docs_url, status_code=307)
+    return await call_next(request)
