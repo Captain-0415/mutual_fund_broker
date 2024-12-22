@@ -31,6 +31,11 @@
 - **Portfolio Tracking:**
   - Track the funds owned by the user and view the portfolio's total value.
 
+#### You can explore the full documentation and available API endpoints at either of the following locations:
+
+- [API Documentation](https://mutual-funds-api.apidog.io/) 
+- Access the documentation directly at the `/docs` endpoint in your browser.
+
 ![](https://i.imgur.com/waxVImv.png)
 
 
@@ -92,6 +97,8 @@ alembic revision -m "Create tables for User, MutualFund, Portfolio, and Investme
 ```
 alembic upgrade head
 ```
+
+![](https://i.imgur.com/waxVImv.png)
 
 ## **Endpoints**
 
