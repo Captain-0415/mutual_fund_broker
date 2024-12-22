@@ -69,6 +69,30 @@ To get the application up and running, follow these steps:
 
 ![](https://i.imgur.com/waxVImv.png)
 
+
+## Adding Tables to the Database [Optional]
+
+#### The below steps are to be performed from inside the fastAPI container.
+
+This project uses Alembic for managing database migrations. Follow the steps below to create the necessary tables in your database.
+
+---
+
+### 1. Generate a New Migration Script
+
+Generate a migration script to apply table creation changes.
+
+Run the following command:
+
+```
+alembic revision -m "Create tables for User, MutualFund, Portfolio, and Investment models"
+```
+
+### 2. Apply migration changes
+```
+alembic upgrade head
+```
+
 ## **Endpoints**
 
 ### 1. **User Registration**
